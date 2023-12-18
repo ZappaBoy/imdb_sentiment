@@ -1,0 +1,35 @@
+[tool.poetry]
+name = "imdb-sentiment"
+version = "0.1.0"
+description = ""
+authors = ["ZappaBoy <federico.zappone@justanother.cloud>"]
+maintainers = ["ZappaBoy <federico.zappone@justanother.cloud>"]
+readme = "README.md"
+packages = [{ include = "imdb_sentiment" }]
+
+[tool.poetry.dependencies]
+python = ">=3.11,<3.12"
+pydantic = "^1.10.7"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^7.3.1"
+python-dotenv = "^1.0.0"
+poetry2setup = "^1.1.0"
+pytest-env = "^0.8.1"
+
+[tool.pytest.ini_options]
+addopts = "-s -v"
+pythonpath = [
+    "imdb_sentiment"
+]
+env = [
+    "ENVIRONMENT=testing",
+]
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+test = "pytest:main"
+imdb_sentiment = "imdb_sentiment:main"
