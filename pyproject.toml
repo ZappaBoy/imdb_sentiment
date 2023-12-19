@@ -15,6 +15,7 @@ pandas = "^2.1.4"
 jinja2 = "^3.1.2"
 transformers = { extras = ["torch"], version = "^4.36.2" }
 tensorflow = "2.13.0"
+accelerate = "^0.25.0"
 
 
 [tool.poetry.group.dev.dependencies]
@@ -23,13 +24,32 @@ python-dotenv = "^1.0.0"
 poetry2setup = "^1.1.0"
 pytest-env = "^0.8.1"
 
+[tool.poetry.group.cpu]
+optional = true
+
+[tool.poetry.group.cpu.dependencies]
+tensorflow = { version = "^2.13.0" }
+
 [tool.poetry.group.nvidia]
 optional = true
 
 [tool.poetry.group.nvidia.dependencies]
-torch = "2.1.2"
-torchvision = "0.16.2"
-torchaudio = "2.1.2"
+tensorflow = { version = "^2.13.0" }
+# nvidia-cudnn-cu11 = { version = "8.6.0.163" }
+
+#[tool.poetry.group.amd]
+#optional = true
+#
+#[tool.poetry.group.amd.dependencies]
+#tensorflow-rocm = { version = "2.13.0.570" }
+
+#[tool.poetry.group.nvidia]
+#optional = true
+#
+#[tool.poetry.group.nvidia.dependencies]
+#torch = "2.1.2"
+#torchvision = "0.16.2"
+#torchaudio = "2.1.2"
 
 #[tool.poetry.group.amd]
 #optional = true
@@ -39,10 +59,10 @@ torchaudio = "2.1.2"
 #torchvision = {version = "0.18.0.dev20231218+rocm5.7", source="pytorch-rocm"}
 #torchaudio = {version = "2.2.0.dev20231218+rocm5.7", source="pytorch-rocm"}
 
-[[tool.poetry.source]]
-name = "pytorch-rocm"
-url = "https://download.pytorch.org/whl/nightly/rocm5.7/"
-priority = "explicit"
+#[[tool.poetry.source]]
+#name = "pytorch-rocm"
+#url = "https://download.pytorch.org/whl/nightly/rocm5.7/"
+#priority = "explicit"
 
 [tool.pytest.ini_options]
 addopts = "-s -v"
