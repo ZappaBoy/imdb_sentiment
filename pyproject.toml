@@ -10,12 +10,39 @@ packages = [{ include = "imdb_sentiment" }]
 [tool.poetry.dependencies]
 python = ">=3.11,<3.12"
 pydantic = "^1.10.7"
+tensorflow-datasets = "^4.9.4"
+pandas = "^2.1.4"
+jinja2 = "^3.1.2"
+transformers = { extras = ["torch"], version = "^4.36.2" }
+tensorflow = "2.13.0"
+
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^7.3.1"
 python-dotenv = "^1.0.0"
 poetry2setup = "^1.1.0"
 pytest-env = "^0.8.1"
+
+[tool.poetry.group.nvidia]
+optional = true
+
+[tool.poetry.group.nvidia.dependencies]
+torch = "2.1.2"
+torchvision = "0.16.2"
+torchaudio = "2.1.2"
+
+#[tool.poetry.group.amd]
+#optional = true
+#
+#[tool.poetry.group.amd.dependencies]
+#torch = {version = "2.3.0.dev20231218+rocm5.7", source="pytorch-rocm"}
+#torchvision = {version = "0.18.0.dev20231218+rocm5.7", source="pytorch-rocm"}
+#torchaudio = {version = "2.2.0.dev20231218+rocm5.7", source="pytorch-rocm"}
+
+[[tool.poetry.source]]
+name = "pytorch-rocm"
+url = "https://download.pytorch.org/whl/nightly/rocm5.7/"
+priority = "explicit"
 
 [tool.pytest.ini_options]
 addopts = "-s -v"
